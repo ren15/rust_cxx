@@ -1,0 +1,3 @@
+
+help:
+	sudo rm -rf 

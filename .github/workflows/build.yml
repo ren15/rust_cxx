@@ -1,0 +1,28 @@
+name: ci
+
+on: push
+
+env:
+  DEBIAN_FRONTEND: noninteractive
+
+jobs:
+  run:
+    runs-on: ubuntu-20.04
+    container: debian:sid
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: check builder
+        run: |
+          lscpu
+
+      - name: Setup
+        run: |
+          bash ci/deb_install.sh
+
+      - name: Compile Rust
+        run: |
+          PATH="$HOME/.cargo/bin:$PATH"
+          cd demo
+          cargo r
