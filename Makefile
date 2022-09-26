@@ -1,3 +1,5 @@
+.PHONY: $(MAKECMDGOALS)
+
 
 help:
-	sudo rm -rf 
+	echo "help"
